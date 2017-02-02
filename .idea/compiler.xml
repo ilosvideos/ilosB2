@@ -21,6 +21,8 @@
     <bytecodeTargetLevel>
       <module name="EnsembleB2_main" target="1.7" />
       <module name="EnsembleB2_test" target="1.7" />
+      <module name="IlosB2_main" target="1.7" />
+      <module name="IlosB2_test" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>
