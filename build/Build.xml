@@ -37,13 +37,22 @@
   <!-- ========================= core build targets ========================= -->
   <!-- ====================================================================== -->
 
-  <target name="build" depends="init, -build" description="Generates the Building Block distribution file (WAR)."/>
+<!--  <target name="build" depends="init, -build" description="Generates the Building Block distribution file (WAR)."/>
   <target name="-build" depends="-compile, -prepare, -compile-jsps">
     <jar jarfile="${warfile}" compress="true" index="true">
       <manifest>
         <attribute name="${b2.version.name}" value="${b2.version.number}"/>
       </manifest>
       <fileset dir="${staging.dir}"/>Fo
+    </jar>
+    <antcall target="hook-post-build"/>
+  </target>-->
+
+  <target name="build" depends="init, -build" description="Generates the Building Block distribution file (WAR)."/>
+  <target name="-build" depends="-compile, -prepare">
+    <jar jarfile="${warfile}" compress="true" index="true">
+
+      <fileset dir="${staging.dir}"/>
     </jar>
     <antcall target="hook-post-build"/>
   </target>
@@ -74,7 +83,7 @@
     <copy todir="${staging.dir}/WEB-INF/lib">   <fileset dir="lib"/>   </copy>
 
     <!-- Don't fail on errors because not all B2 might have .jsp files -->
-    <copy todir="${staging.dir}" failonerror="false"><fileset dir="web"/></copy>
+    <copy todir="${staging.dir}" failonerror="true"><fileset dir="web"/></copy>
 
     <antcall target="hook-post-prepare"/>
   </target>
@@ -187,19 +196,19 @@ log4j.org.apache.jasper=INFO, JSPC
 
   <target name="-set-bb-home-default" unless="env.BB_HOME">
     <!-- TODO: Unix environments -->
-    <property name="bb.home" location="c:/blackboard"/>
+    <property name="bb.home" location="/usr/local/blackboard/"/>
     <echo>Using default BB_HOME value: ${bb.home}</echo>
   </target>
 
   <target name="-set-bb-host" depends="-set-bb-host-env, -set-bb-host-default"/>
 
   <target name="-set-bb-host-env" if="env.BB_HOST">
-    <property name="bb.host" value="${env.BB_HOST}"/>
+    <property name="bb.host" value="localhost:9876"/>
     <echo>Using BB_HOST enironment value: ${bb.host}</echo>
   </target>
 
   <target name="-set-bb-host-default" unless="env.BB_HOST">
-    <property name="bb.host" value="localhost"/>
+    <property name="bb.host" value="localhost:9876"/>
     <echo>Using default BB_HOST value: ${bb.host}</echo>
   </target>
 

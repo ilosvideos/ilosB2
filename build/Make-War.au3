@@ -5,7 +5,7 @@ Else
 	$Project =  $CmdLine[1]
 	$WarFile =  $CmdLine[2]
 EndIf
-$url = "http://localhost/webapps/bb-starting-block-bb_bb60/execute/install?fileName=" & $Warfile & "&clean=true&available=true"
+$url = "http://localhost:9876/webapps/bb-starting-block-bb_bb60/execute/install?fileName=" & $Warfile & "&clean=true&available=true"
 ; build here
 WinActivate("Java EE")
 Send("!fo")

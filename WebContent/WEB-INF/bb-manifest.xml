@@ -3,7 +3,7 @@
   <!-- core extension information -->
   <plugin>
     <name value= "plugin.name"/>
-    <handle value= "Ensemble-B2"/>
+    <handle value= "Ilos-B2"/>
     <default-locale value="en_US" />
     <description value= "plugin.description"/>
     <version value= "3.4.140213"/>
@@ -12,8 +12,8 @@
     </requires>
     <vendor>
       <id value="ist"/>
-      <name value="Syracuse University iSchool"/>
-      <url value="http://ischool.syr.edu" />
+      <name value="Ilos Videos"/>
+      <url value="https://www.ilosvideos.com" />
       <description value="plugin.vendor.description" />
     </vendor>
 	  <http-actions>
@@ -21,9 +21,9 @@
 	  </http-actions>
 
     <content-handlers>
-      <!-- Ensemble Content Type Handler. -->
+      <!-- Ilos Content Type Handler. -->
       <content-handler> 
-        <name value="Ensemble Video"/>
+        <name value="Ilos Video"/>
         <handle value= "resource/x-bb-ensemble-vid-mashup"/>
         <http-actions>
 	        <create value="handler/search-vid.jsp"/>
@@ -71,23 +71,23 @@
     
     <!-- Tools defined by this extension -->
     <application-defs>
-      <application handle="Ensemble-B2" type="shared" use-ssl="false" name="Ensemble Video (In Text Editor)" can-allow-guest="true"  small-icon="" large-icon="/images/handler_icon.gif" is-course-tool="true" is-group-tool="true" is-sys-tool="true" is-org-tool="true">
-        <description small-icon="/images/handler_icon.gif">Application installed as part of the Ensemble Building Block</description>
+      <application handle="Ilos-B2" type="shared" use-ssl="false" name="Ilos Video (In Text Editor)" can-allow-guest="true"  small-icon="" large-icon="/images/handler_icon.gif" is-course-tool="true" is-group-tool="true" is-sys-tool="true" is-org-tool="true">
+        <description small-icon="/images/handler_icon.gif">Application installed as part of the Ilos Building Block</description>
         <links>
            <link> <!-- System Tool -->
             <type value="system_tool"/>
-            <name value="Ensemble Settings"/>
+            <name value="Ilos Settings"/>
             <url value="system/index.jsp" />
-            <description value="Administer the Ensemble Video Building Block" />
+            <description value="Administer the Ilos Video Building Block" />
             <icons>
               <listitem value="images/ensemble.icon.gif"/>
             </icons>
           </link>   
-		  <link> <!--course Mashup Entry Point For Ensemble Video-->
+		  <link> <!--course Mashup Entry Point For Ilos Video-->
 			   <type value="vtbe_mashup_course" />
-			   <name value="Ensemble Video" />
+			   <name value="Ilos Videos E" />
 			   <url value="handler/search-vid.jsp?vtbe=true&amp;course_id=@X@course.pk_string@X@" />
-			   <description value="Embed Ensemble Video" />
+			   <description value="Embed Ilos Video" />
 		 	   <icons>
 		 		 <listitem value="/images/handler_icon.gif"></listitem>
 		 		 <toolbar value="/images/handler_icon.gif"></toolbar>
