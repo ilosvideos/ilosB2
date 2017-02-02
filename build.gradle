@@ -8,8 +8,8 @@ apply plugin: "idea"
 //apply from: "api.gradle"
 
 // define the version for the project when publishing to maven
-group "ca.ubc"
-version "3.2.0002"
+group "ilos.co"
+version "1.0.0"
 
 webAppDirName = file("WebContent")
 sourceCompatibility = '1.7'
@@ -24,17 +24,6 @@ sourceSets {
             srcDir 'src/resources'
         }
     }
-
-/*
-    test {
-        java {
-            srcDir 'test/java'
-        }
-        resources {
-            srcDir 'test/resources'
-        }
-    }
-*/
 }
 
 ext {
@@ -88,7 +77,6 @@ dependencies {
             'org.simpleframework:simple-xml:2.7',
             'com.google.code.gson:gson:2.2.4',
             'commons-httpclient:commons-httpclient:3.1',
-//            'edu.syr.ischool.mafudge.ensemblelib:ensemblelib',
             compile('net.oauth:oauth-core:20090105:mod1') { transitive = false }
 
     testCompile 'org.testng:testng:6.8.7'
