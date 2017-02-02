@@ -1,1 +1,0 @@
-"C:\Program Files (x86)\AutoIt3\autoit3.exe" C:\bb\projects\EnsembleB2\build\make-war.au3 EnsembleB2 "C:\bb\projects\EnsembleB2\build\EnsembleB2.war"
