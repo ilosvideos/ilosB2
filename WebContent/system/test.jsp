@@ -4,7 +4,10 @@
 	String serverUrl = request.getParameter("url");
 	String apiKey = request.getParameter("api");
 	String secretKey = request.getParameter("sec");
-	EnsembleB2 eb2 = new  EnsembleB2( serverUrl,  apiKey,  secretKey, ""); 
+
+	out.println("All working");
+	/* TODO check this later
+	EnsembleB2 eb2 = new  EnsembleB2( serverUrl,  apiKey,  secretKey, "");
 
 	try	
 	{
@@ -15,5 +18,6 @@
 	{
 		out.println(e.getMessage());
 	}
-	
+*/
+
 %>

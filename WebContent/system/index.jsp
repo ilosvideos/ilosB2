@@ -24,7 +24,6 @@
     <bbNG:pageTitleBar iconUrl="../images/powered.by.ensemble.gif" showTitleBar="true" title="${bundle['page.system.index.title']}"/>
     <bbNG:actionControlBar>
       <bbNG:actionButton title="${bundle['page.system.index.button.admin']}" url="admin.jsp" primary="true" />
-      <bbNG:actionButton title="${bundle['page.system.index.button.shared']}" url="sharedweb.jsp" primary="true" />
     </bbNG:actionControlBar>
   </bbNG:pageHeader>
   <bbNG:jsFile href="<%=jQueryPath %>"/> <!--  Note: does not support absolute Url's -->  
@@ -34,7 +33,9 @@
 	<bbNG:contentListItem title="${bundle['page.system.admin.step1.servername.label']}"><code><%=b2Context.getSetting(SERVER_NAME)%></code></bbNG:contentListItem>
 	<bbNG:contentListItem title="${bundle['page.system.admin.step1.apikey.label']}"><code><%=b2Context.getSetting(API_KEY)%></code></bbNG:contentListItem>
 	<bbNG:contentListItem title="${bundle['page.system.admin.step1.secretkey.label']}"><code><%=b2Context.getSetting(SECRET_KEY)%></code></bbNG:contentListItem>
+<%--
 	<bbNG:contentListItem title="${bundle['page.system.admin.step1.domain.label']}"><code><%=b2Context.getSetting(DOMAIN)%></code></bbNG:contentListItem>
+--%>
 	<bbNG:contentListItem title="Test Your Configuration">
 		<button class="genericButton" id="testConfiguration">Test</button>
  		<span id="testStatus"></span>
@@ -56,7 +57,7 @@
      		jQuery.ajaxSetup ({  
 		         cache: false  
 		     });  
-	    	 var load_url = "test.jsp?url=<%=b2Context.getSetting(SERVER_NAME)%>&api=<%=b2Context.getSetting(API_KEY)%>&sec=<%=b2Context.getSetting(SECRET_KEY)%>";
+	    	 var load_url = "test.jsp?url=<%=b2Context.getSetting(SERVER_NAME)%>/blackboardBb/test/?apiKey=<%=b2Context.getSetting(API_KEY)%>";
 	    	 var ajax_load = "Testing... "; 
 
        		jQuery("#testConfiguration").click(function() {
