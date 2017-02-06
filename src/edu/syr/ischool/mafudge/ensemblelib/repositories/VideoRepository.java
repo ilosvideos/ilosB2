@@ -115,41 +115,27 @@ public class VideoRepository {
 		InputStream is = new ByteArrayInputStream(xmlString.getBytes("UTF8"));		
 		Document doc=db.parse(is);
 		m_vidList = new ArrayList<Video>(); // start with empty
-		Boolean contentSchema = true;
+		//Boolean contentSchema = true;
 		    
-		NodeList nl = doc.getElementsByTagName("Content");
+		NodeList nl = doc.getElementsByTagName("item");
 		if (nl.getLength() == 0) {
-			nl = doc.getElementsByTagName("video");
-			contentSchema = false;
+			nl = doc.getElementsByTagName("item");
+			//contentSchema = false;
 		}
 		for(int i=0;i<nl.getLength();i++)
 		{
+			//TODO check video class
 			Video v = new Video();
 			NodeList videoID;
-			if (contentSchema) {
-				videoID=doc.getElementsByTagName("ID");
-				v.videoID=videoID.item(i).getChildNodes().item(0).getNodeValue();
-				v.videoDate = getElementValue(doc,"DateAdded",i);
-				v.videoDescription = getElementValue(doc,"Description",i);
-				v.videoTitle = getElementValue(doc,"Title",i);
-				v.videoKeywords = getElementValue(doc,"Keywords",i);
-				v.thumbnailUrl = getElementValue(doc,"ThumbnailUrl",i);
-				v.libraryID = getElementValue(doc,"LibraryID",i);
-				v.libraryName = getElementValue(doc,"LibraryName",i);				
-			} else { // not contentSchema, but old publicApi schema
-				videoID = doc.getElementsByTagName("videoID");
-				v.videoID=videoID.item(i).getChildNodes().item(0).getNodeValue();
-				v.videoDate = getElementValue(doc,"videoDate",i);
-				v.videoDescription = getElementValue(doc,"videoDescription",i);
-				v.videoTitle = getElementValue(doc,"videoTitle",i);
-				v.videoKeywords = getElementValue(doc,"videoKeywords",i);
-				v.thumbnailUrl = getElementValue(doc,"thumbnailUrl",i);
-				v.libraryID = getElementValue(doc,"departmentID",i);
-				v.libraryName = getElementValue(doc,"departmentName",i);				
-			}
-			if (videoID.getLength()== 0 ) {
-			}
-			  
+
+			videoID=doc.getElementsByTagName("video_id");
+			v.videoID=videoID.item(i).getChildNodes().item(0).getNodeValue();
+			v.videoDate = getElementValue(doc,"pubDate",i);
+			v.videoDescription = getElementValue(doc,"description",i);
+			v.videoTitle = getElementValue(doc,"title",i);
+			v.thumbnailUrl = getElementValue(doc,"media:thumbnail",i);
+			v.link = getElementValue(doc,"link",i);
+
 			this.addVideo(v);
 		} //end for
 	}
@@ -158,7 +144,20 @@ public class VideoRepository {
 	{
 		String result = "";
 		try {
-			result =  xmlDoc.getElementsByTagName(tagName).item(index).getChildNodes().item(0).getNodeValue();
+			if(tagName == "pubDate")
+			{
+				result =  xmlDoc.getElementsByTagName(tagName).item(index).getChildNodes().item(0).getNodeValue();
+			}
+			else if(tagName == "media:thumbnail")
+			{
+				NodeList nodes = xmlDoc.getDocumentElement().getElementsByTagName(tagName);
+				Element element = (Element) nodes.item(index);
+				result = element.getAttribute("url");
+			}
+			else
+			{
+				result =  xmlDoc.getElementsByTagName(tagName).item(++index).getChildNodes().item(0).getNodeValue();
+			}
 		} catch (NullPointerException e) {
 			result = "";
 		}
@@ -166,26 +165,18 @@ public class VideoRepository {
 	}
 		
 } //end class
-		/* XML that comes from ensemble
-		 <video>
-			<videoID>p2hJ_RWViki60F7wHKYeTg</videoID>
-			<videoDate>2010-10-13T10:34:52-04:00</videoDate>
-			<videoDateProduced>2010-10-13T00:00:00-04:00</videoDateProduced>
-			<videoDescription/>
-			<videoTitle>Ensemble Video Annotation Demo</videoTitle>
-			<videoDuration>99</videoDuration>
-			<videoKeywords/>
-			<isVideoContent>true</isVideoContent>
-			<thumbnailUrl>http://demo.ensemblevideo.com/app/assets/xace_lzrwEO46x2BKiJtKA.jpg?width=100</thumbnailUrl>
-			<previewUrl>http://demo.ensemblevideo.com/app/assets/ejQBw6WQ3UG-csd_OqSvKQ.jpg</previewUrl>
-			<viewCount>9</viewCount>
-			<webSiteID>B9DB461B-7853-411C-892B-3AF840804C4B</webSiteID>
-			<webSiteName>Demo</webSiteName>
-			<departmentID>B75A1899-768C-4DDA-8586-BAE9F6300735</departmentID>
-			<departmentName>University Relations Office</departmentName>
-			<departmentWebSite/>
-			<departmentLogo/>
-		</video> 
+		/* XML that comes from ilos
+		 <item>
+    		<video_id>206073</video_id>
+    		<title>open search 2</title>
+    		<link>https://cloud.ilosvideos.com/view/GqF8CpMD3Huk</link>
+    		<description>
+        		<![CDATA[<img src="https://cdn.cloud.ilosvideos.com/content/G/q/F/GqF8CpMD3Huk/GqF8CpMD3Huk_NvLddqlWyPwq.jpg?Expires=1486397544&amp;Signature=Vp9i2O1UfxxFFzaKNDr5bU8LG5jL474d7LcFquKgDfIJNMWO4-rxUGEKtmQJvDhcCNxsft9lqDzpP8bCZbP~BSmcA~wyoKkS7q8cK2oRWTH8DB~PCZMaxZH2eoHfOUn6ZCqDrf98U38KZpHDMXle6rS-03XYbHqK11ovhw0RFNNbqJivdevwgTat~ZSjukjNQ56fsBT-wEiJbzqlkvWZYXO77~dJC6TeJolK~9Nbp2eNmj4utOcjh-wbKHxn3Bx7yZ37x5ynjCi~K8xUYiwtBu9bJQo-GQCl1EO0o9Y7jPiiWGkSUUmCNMmTSihlANp4AkBSUDb2rE0uglcHHuvS~g__&amp;Key-Pair-Id=APKAJD2F63UVTWAR63DQ"><br>]]>
+            </description>
+            <pubDate>Mon, 06 Feb 2017 04:10:15 Z</pubDate>
+        	<media:thumbnail height="102" width="180" url="https://cdn.cloud.ilosvideos.com/content/G/q/F/GqF8CpMD3Huk/GqF8CpMD3Huk_NvLddqlWyPwq.jpg?Expires=1486397544&amp;Signature=Vp9i2O1UfxxFFzaKNDr5bU8LG5jL474d7LcFquKgDfIJNMWO4-rxUGEKtmQJvDhcCNxsft9lqDzpP8bCZbP~BSmcA~wyoKkS7q8cK2oRWTH8DB~PCZMaxZH2eoHfOUn6ZCqDrf98U38KZpHDMXle6rS-03XYbHqK11ovhw0RFNNbqJivdevwgTat~ZSjukjNQ56fsBT-wEiJbzqlkvWZYXO77~dJC6TeJolK~9Nbp2eNmj4utOcjh-wbKHxn3Bx7yZ37x5ynjCi~K8xUYiwtBu9bJQo-GQCl1EO0o9Y7jPiiWGkSUUmCNMmTSihlANp4AkBSUDb2rE0uglcHHuvS~g__&amp;Key-Pair-Id=APKAJD2F63UVTWAR63DQ"/>
+    		<media:content height="102" width="180" medium="image" type="image/jpeg" url="https://cdn.cloud.ilosvideos.com/content/G/q/F/GqF8CpMD3Huk/GqF8CpMD3Huk_NvLddqlWyPwq.jpg?Expires=1486397544&amp;Signature=Vp9i2O1UfxxFFzaKNDr5bU8LG5jL474d7LcFquKgDfIJNMWO4-rxUGEKtmQJvDhcCNxsft9lqDzpP8bCZbP~BSmcA~wyoKkS7q8cK2oRWTH8DB~PCZMaxZH2eoHfOUn6ZCqDrf98U38KZpHDMXle6rS-03XYbHqK11ovhw0RFNNbqJivdevwgTat~ZSjukjNQ56fsBT-wEiJbzqlkvWZYXO77~dJC6TeJolK~9Nbp2eNmj4utOcjh-wbKHxn3Bx7yZ37x5ynjCi~K8xUYiwtBu9bJQo-GQCl1EO0o9Y7jPiiWGkSUUmCNMmTSihlANp4AkBSUDb2rE0uglcHHuvS~g__&amp;Key-Pair-Id=APKAJD2F63UVTWAR63DQ"/>
+		</item>
 		 */
 
 

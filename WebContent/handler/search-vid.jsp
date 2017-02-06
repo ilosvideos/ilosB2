@@ -66,8 +66,10 @@
 %>
 <bbNG:jsFile href="<%=jQueryPath %>"/> 
 <bbNG:jsFile href="<%=fancyBoxPath %>"/>   
-<bbNG:pageHeader instructions="Search Ensemble Video">
-    <bbNG:pageTitleBar iconUrl="../images/powered.by.ensemble.gif" showTitleBar="true" title="Search for a video to add through this interface."/>
+<bbNG:pageHeader instructions="Search Ilos Video">
+    <bbNG:pageTitleBar iconUrl="https://s3.amazonaws.com/ilos-public-assets/ilos_icon_16x_16.png"
+					   showTitleBar="true"
+					   title="Search for a video to add through this interface."/>
 </bbNG:pageHeader>
 	<bbNG:jsBlock>
    	<script type="text/javascript">
@@ -116,12 +118,14 @@
      &nbsp;
      <bbNG:textElement name="searchText" id="searchText" isRequired="true" value="<%=searchText %>" size="30" maxLength="255" />
      &nbsp;
+<%--
      <label for="searchSource" class="hideoff">Source:</label>
      <bbNG:selectElement name="searchSource" id="searchSource">
       <bbNG:selectOptionElement optionLabel="Media Library" value="<%=MY_MEDIA %>" isSelected="<%=isMedia %>"/>
       <bbNG:selectOptionElement optionLabel="Shared Library" value="<%=SHARED_MEDIA %>" isSelected="<%=isShared %>"/>
       <bbNG:selectOptionElement optionLabel="Institutional Content" value="<%=INST_CONTENT %>" isSelected="<%=isInstContent %>"/>
      </bbNG:selectElement>
+--%>
      &nbsp;
      <input type="submit" class="genericButton" value="Go" id="submitButton"/>
   </bbNG:form>
@@ -133,6 +137,7 @@
 <% 
 	ref = request.getParameter("http_ref");
 	List<Video> vl = new ArrayList<Video>();
+/*
 	if (isMedia) { // Media Library
 		vl = eb2.getMediaLibraryVideo(encodedSearchText, userName);
 	} else if (isShared) { //Shared Media
@@ -140,6 +145,8 @@
 	} else { // InstContent
 		vl = eb2.getInstContentVideo(encodedSearchText, xmlInstContent);
 	}
+*/
+	vl = eb2.getSharedLibraryVideo(encodedSearchText, userName);
 
 	// If you've returned results...
 	if (vl.size() > 0) {
@@ -147,11 +154,8 @@
 		String preview = "";
 		for (Video v : vl) {	
 			content = eb2.getContentHtml(v.videoID, "");
-			//content = eb2.getServerUrl() + "/app/plugin/plugin.aspx?contentID=" + v.videoID + "&useIFrame=false&embed=true";
-			//preview =eb2.getServerUrl() + "/app/sites/preview.aspx?contentID=" + v.videoID; // Not used
-			
-			// preview = eb2.getContentUrl(v.videoID);
-			// TODO: Test this for various Tweaks.... 
+
+			// TODO: Test this for various Tweaks....
 			// eg.  displayTitle=false&useIFrame=false&embed=true
 			preview = "preview.jsp?contentId=" + v.videoID + "&displayTitle=false";
 	%>
@@ -159,15 +163,15 @@
     <div class="ensemble-searchResult-dataContainer">
      <h3><%=v.videoTitle %></h3>    
      <div class="ensemble-searchResult-metadata">
+<%--
       <strong>Description:</strong>&nbsp;<%=v.videoDescription %><br>
+--%>
       <strong>Date Added:</strong>&nbsp;<%=v.videoDate %><br>
-      <strong>Keywords:</strong>&nbsp;<%=v.videoKeywords %><br>
-      <strong>Library:</strong>&nbsp;<%=v.libraryName %><br>
-      <strong>Content ID:</strong>&nbsp;<%=v.videoID %><br>
+      <strong>Video ID:</strong>&nbsp;<%=v.videoID %><br>
     </div>
     <div class="ensemble-searchResult-imageContainer">
      <div class="ensemble-searchResult-imageContainer-imgDiv">
-       <img src="<%=v.thumbnailUrl %>" alt="<%=v.videoTitle %>">
+       <img width="145" src="<%=v.thumbnailUrl %>" alt="<%=v.videoTitle %>">
      </div>
      <div>
       <table class="ensemble-searchResult-imageOptions" cellpadding="0" cellspacing="0">

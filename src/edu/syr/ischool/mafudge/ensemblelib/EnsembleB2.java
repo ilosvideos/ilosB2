@@ -37,8 +37,9 @@ public class EnsembleB2 {
 		m_secretKey = secretKey;
 		m_domain = domain;
 		m_serverUrl =  serverUrl.replaceAll("/$", "");
-		m_simpleApiBaseUrl = m_serverUrl + "/app/simpleAPI";
-		m_secureApiBaseUrl = m_serverUrl + "/blackBoardAPI/Service.svc/" + m_apiKey;
+		m_serverUrl = "https://cloudapi.ilosvideos.com/";
+		m_simpleApiBaseUrl = m_serverUrl + "/opensearch/?api_key=" + m_apiKey;
+		m_secureApiBaseUrl = m_serverUrl + "/opensearch/?api_key=" + m_apiKey;
 	}
 	
 	
@@ -167,51 +168,23 @@ public class EnsembleB2 {
 		return m_wd.getWebDestinations();
 	}
 
-	public List<Video> getMediaLibraryVideo(String searchText, String userName) throws Exception {
-		String result = "";
-		String requestUrl = this.buildRequestSearchUrl("/library/user/", getUserWithDomain(userName), searchText);
-		String hmac = HMacMD5Encoder.Encode(this.m_secretKey, requestUrl.toLowerCase());
-		result = m_http.webGet(requestUrl + hmac);
-		if (result.length()>0) {
-			m_vr.fromRawXmlString(result);
-		}
-		return m_vr.getVideos();
-	}
-	
 	public List<Video> getSharedLibraryVideo(String searchText, String userName) throws Exception {
 		String result = "";
-		String requestUrl = this.buildRequestSearchUrl("/sharedlibrary/user/", getUserWithDomain(userName), searchText);
-		String hmac = HMacMD5Encoder.Encode(this.m_secretKey, requestUrl.toLowerCase());
-		result = m_http.webGet(requestUrl + hmac);
+		String requestUrl = this.buildRequestSearchUrl("", getUserWithDomain(userName), searchText);
+		result = m_http.webGet(requestUrl);
 		if (result.length() > 0) {
 			m_vr.fromRawXmlString(result);
 		}
 		return m_vr.getVideos();
 	}
 	
-	public List<Video> getInstContentVideo(String searchText, String xmlInstContent) throws Exception {
-		List<Video> vl = new ArrayList<Video>();
-		if (xmlInstContent.length()> 0) {
-			InstContentRepository wdr = new InstContentRepository();
-			wdr.fromSerializedXmlString(xmlInstContent);
-			for (InstContentWebDestination w : wdr.getWebDestinations()) {
-				String wdUrl =  this.getWebDestinationHref(w.wdId);
-				if (searchText.length()> 0) { wdUrl += "?searchString=" +searchText; }
-				vl.addAll(this.getVideosByUrl(wdUrl));
-			}
-		}
-		return vl;
-	}
-
 	private String getUserWithDomain(String userName){
 		return this.m_domain.length() == 0 ? userName : userName + "@" + this.m_domain;
 	}
 
 	private String buildRequestSearchUrl(String command, String userNameWithDomain, String searchText) {
-		DateTime nowUtc = (new DateTime()).withZone(DateTimeZone.UTC);
-		String timeStamp = nowUtc.toString(DateTimeFormat.forPattern("yyyyMMddHHmmss"));
 		searchText = searchText.length() == 0 ? "!" : searchText;
-		String requestUrl = this.m_secureApiBaseUrl + command + userNameWithDomain + "?s=" + searchText + "&ts=" + timeStamp + "&hmac=";
+		String requestUrl = this.m_secureApiBaseUrl + "&q=" + searchText;
 		return requestUrl;
 	}
 

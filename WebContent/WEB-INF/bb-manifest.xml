@@ -21,14 +21,12 @@
 	  </http-actions>
 
     <content-handlers>
-      <!-- Ilos Content Type Handler. -->
-      <content-handler> 
-        <name value="Ilos Video"/>
+      <!-- Ilos Content Type Handler. TODO delete?-->
+<!--      <content-handler>
+        <name value="Ilos Video ONE"/>
         <handle value= "resource/x-bb-ensemble-vid-mashup"/>
         <http-actions>
 	        <create value="handler/search-vid.jsp"/>
-<!--  	    <modify value="execute/edit"/>
-	        <remove value="execute/remove"/>   -->
         </http-actions>
         <icons>
 	        <toolbar value="/images/handler_icon.gif"/>
@@ -42,30 +40,8 @@
                 <action-type value="image"/>
             </type>            
         </types>             
-      </content-handler>
-      <!-- Ensemble Playlist Content Handler-->
-      <content-handler> 
-        <name value="Ensemble Playlist"/>
-        <handle value= "resource/x-bb-ensemble-wd-mashup"/>
-        <http-actions>
-	        <create value="handler/web-dest.jsp"/>
-<!--        <modify value="execute/edit"/>
-	        <remove value="execute/remove"/> -->
-        </http-actions>
-        <icons>
-	        <toolbar value="/images/handler_icon.gif"/>
-	        <listitem value="/images/handler_icon.gif"/>
-        </icons>
-        <types>
-            <type>
-                <action-type value="mashup"/>
-            </type>
-            <type>
-                <action-type value="image"/>
-            </type>            
-        </types>             
-      </content-handler>
-
+      </content-handler>-->
+      <!-- Ensemble Playlist Content Handler TODO delete handler/web-dest.jsp?-->
     </content-handlers>
 
     
