@@ -30,9 +30,9 @@
 
 <%
 	String SHARED_WEB_DEST = "shared-web-destinations";
+	String API_SERVER_NAME = "api-server-name";
 	String SERVER_NAME = "server-name";
 	String API_KEY = "api-key";
-    String DOMAIN = "domain";
 	String SECRET_KEY = "secret-key";
 	String MY_MEDIA = "myMedia";
 	String SHARED_MEDIA= "sharedMedia";
@@ -41,7 +41,14 @@
 	String jQueryPath = b2Context.getPath() + "js/jquery.min.js";
 	String fancyBoxPath = b2Context.getPath() + "js/jquery.fancybox.pack.js";
 	String xmlInstContent = b2Context.getSetting(SHARED_WEB_DEST);
-	EnsembleB2 eb2 = new EnsembleB2(b2Context.getSetting(SERVER_NAME),b2Context.getSetting(API_KEY), b2Context.getSetting(SECRET_KEY), b2Context.getSetting(DOMAIN));
+
+	EnsembleB2 eb2 = new EnsembleB2(
+			b2Context.getSetting(SERVER_NAME),
+			b2Context.getSetting(API_KEY),
+			b2Context.getSetting(SECRET_KEY),
+			b2Context.getSetting(API_SERVER_NAME)
+	);
+
 	pageContext.setAttribute("bundle", b2Context.getResourceStrings());
 	String courseId = ctx.getCourseId().toString();  
 	String contentId = ctx.getContentId().toString();
@@ -62,9 +69,10 @@
 	String encodedSearchText = searchText != null ? URLEncoder.encode(searchText,"UTF-8"): ""; 
 	// need to encode again to pass the "%" symbol on the query string.
 	encodedSearchText = encodedSearchText.contains("%") ? URLEncoder.encode(encodedSearchText,"UTF-8") : encodedSearchText;
-	String processUrl = isVtbe ? "vtbe-search-vid-process.jsp" : "search-vid-process.jsp";
+	String processUrl = "vtbe-search-vid-process.jsp";
+
 %>
-<bbNG:jsFile href="<%=jQueryPath %>"/> 
+	<bbNG:jsFile href="<%=jQueryPath %>"/>
 <bbNG:jsFile href="<%=fancyBoxPath %>"/>   
 <bbNG:pageHeader instructions="Search Ilos Video">
     <bbNG:pageTitleBar iconUrl="https://s3.amazonaws.com/ilos-public-assets/ilos_icon_16x_16.png"
@@ -155,9 +163,7 @@
 		for (Video v : vl) {	
 			//content = eb2.getContentHtml(v.randtag, "");
 
-			// TODO: Test this for various Tweaks.... probably delete preview.jsp
 			// eg.  displayTitle=false&useIFrame=false&embed=true
-			//preview = "preview.jsp?contentId=" + v.videoID + "&displayTitle=false";
 	%>
 <div class="ensemble-searchResult-itemContainer">
     <div class="ensemble-searchResult-dataContainer">
@@ -182,7 +188,6 @@
        </tr>
        <tr>
         <td class="ensemble-searchResult-button"> 
-        <!-- links to search-vid-process.jsp -->
          <a href="<%=processUrl %>?randtag=<%=v.randtag %>&amp;title=<%=URLEncoder.encode(v.videoTitle,"UTF-8") %>&amp;course_id=<%=courseId %>&amp;http_ref=<%=ref %>">Select</a>
         </td>
        </tr>

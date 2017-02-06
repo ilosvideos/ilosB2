@@ -22,11 +22,13 @@ public class WebDestinationRepository {
 		m_wdlist = new ArrayList<WebDestination>();
 	}
 	
+/*
 	public List<WebDestination> getWebDestinations()
 	{
 		return m_wdlist;
 	}
-	
+*/
+
 	public boolean addWebDestination( WebDestination wd)
 	{
 		boolean result = false;

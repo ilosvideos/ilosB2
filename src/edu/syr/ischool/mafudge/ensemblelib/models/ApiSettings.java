@@ -15,5 +15,8 @@ public class ApiSettings {
 	
 	@Element (required=true)
 	public String secretKey;
-	
+
+	@Element (required=true)
+	public String apiServer;
+
 }

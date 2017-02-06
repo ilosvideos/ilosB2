@@ -20,11 +20,13 @@ public class InstContentRepository {
 	}
 
 	// Returns a collection of InstContentWebDestinations
+/*
 	public List<InstContentWebDestination> getWebDestinations()
 	{
 		return m_wdList;
 	}
-	
+*/
+
 	// Sets the collection of WebDestinations
 	public void setWebDestinations(List<InstContentWebDestination> wdList)
 	{
