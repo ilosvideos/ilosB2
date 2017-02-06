@@ -105,7 +105,7 @@ public class EnsembleB2 {
 		String hmac = HMacMD5Encoder.Encode(this.m_secretKey, requestUrl.toLowerCase());
 		return (requestUrl + hmac);
 	}
-		
+
 	public String getWebDestinationHtml(String webDestinationID) {
 		// Ensemble 3.4 and up
 		return getWebDestinationHtmlAsIFrame(webDestinationID);
@@ -114,7 +114,7 @@ public class EnsembleB2 {
 
 	// Ensemble pre 3.4
 	public String getWebDestinationHtmlAsJavascript(String webDestinationID) {
-		String plugInUrl = this.getPluginUrl();  		
+		String plugInUrl = this.getPluginUrl();
 		String embedHtml = "<div id=\"ensembleContentContainer_" + webDestinationID + "\" class=\"ensembleContentContainer\" style=\"width: 99%; height: 1000px;\">";
 		embedHtml += "<script type=\"text/javascript\" src=\"" + plugInUrl + "?destinationID=" + webDestinationID + "&useIFrame=true\"></script></div>";
 		return embedHtml;
@@ -122,23 +122,18 @@ public class EnsembleB2 {
 
 	// Ensemble 3.4 and higher
 	public String getWebDestinationHtmlAsIFrame(String webDestinationID) {
-		String plugInUrl = this.getEmbedPluginUrl();  		
+		String plugInUrl = this.getEmbedPluginUrl();
 		String embedHtml = "<iframe id=\"ensembleFrame_" + webDestinationID + "\" src=\"" + plugInUrl + "?DestinationID=" + webDestinationID + "\" ";
-		embedHtml += "frameborder=\"0\" style=\"width: 99%; height : 1000px;\" allowfullscreen></iframe>"; 
+		embedHtml += "frameborder=\"0\" style=\"width: 99%; height : 1000px;\" allowfullscreen></iframe>";
 		return embedHtml;
 	}
 
-	public String getContentHtml(String contentID, String thumbnail){
-		return getContentHtmlAsIFrame(contentID,thumbnail);
-	}
-	
-	// Ensemble 3.4 and higher
-	public String getContentHtmlAsIFrame(String randtag, String thumbnail) {
+	public String getContentHtml(String randtag){
 		String plugInUrl=this.getEmbedPluginUrl();
 
 		String embedHtml = "<iframe id=\"ilosEmbeddedContent_"+randtag+"\" width=\"640\" height=\"360\" allowTransparency=\"true\"";
 		embedHtml += " mozallowfullscreen webkitallowfullscreen allowfullscreen style=\"background-color:transparent;\" frameBorder=\"0\"";
-		embedHtml += " src=\""+plugInUrl+"embed/"+randtag+"\"></iframe>";
+		embedHtml += " src=\""+plugInUrl+"/embed/"+randtag+"\"></iframe>";
 		return embedHtml;
 	}
 

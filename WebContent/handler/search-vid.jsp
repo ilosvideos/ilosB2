@@ -145,33 +145,16 @@
 <% 
 	ref = request.getParameter("http_ref");
 	List<Video> vl = new ArrayList<Video>();
-/*
-	if (isMedia) { // Media Library
-		vl = eb2.getMediaLibraryVideo(encodedSearchText, userName);
-	} else if (isShared) { //Shared Media
-		vl = eb2.getSharedLibraryVideo(encodedSearchText, userName);
-	} else { // InstContent
-		vl = eb2.getInstContentVideo(encodedSearchText, xmlInstContent);
-	}
-*/
 	vl = eb2.getSharedLibraryVideo(encodedSearchText, userName);
 
 	// If you've returned results...
 	if (vl.size() > 0) {
-		String content = "";
-		String preview = "";
-		for (Video v : vl) {	
-			//content = eb2.getContentHtml(v.randtag, "");
-
-			// eg.  displayTitle=false&useIFrame=false&embed=true
+		for (Video v : vl) {
 	%>
 <div class="ensemble-searchResult-itemContainer">
     <div class="ensemble-searchResult-dataContainer">
      <h3><%=v.videoTitle %></h3>    
      <div class="ensemble-searchResult-metadata">
-<%--
-      <strong>Description:</strong>&nbsp;<%=v.videoDescription %><br>
---%>
       <strong>Date Added:</strong>&nbsp;<%=v.videoDate %><br>
       <strong>Video ID:</strong>&nbsp;<%=v.videoID %><br>
     </div>
