@@ -8,6 +8,7 @@
   <bbNG:cssFile href="../css/EnsembleB2.css" />
 <%
   String SERVER_NAME = "server-name";
+  String API_SERVER_NAME = "server-name";
   String API_KEY = "api-key";
   String SECRET_KEY = "secret-key";
   String DOMAIN = "domain";
@@ -15,8 +16,11 @@
   B2Context b2Context = new B2Context(request);
   String cancelUrl = "index.jsp";
 
+  //TODO how to add env variables?
   String defaultServer = "https://cloud.ilosvideos.com";
   b2Context.setSetting(SERVER_NAME, defaultServer);
+  String apiServer = "https://cloudapi.ilosvideos.com";
+  b2Context.setSetting(API_SERVER_NAME, apiServer);
 
   out.write(b2Context.getSetting(SERVER_NAME));
 

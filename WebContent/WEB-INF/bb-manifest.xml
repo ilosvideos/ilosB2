@@ -60,15 +60,11 @@
             </icons>
           </link>   
 		  <link> <!--course Mashup Entry Point For Ilos Video-->
-			   <type value="vtbe_mashup_course" />
-			   <name value="Ilos Videos E" />
-			   <url value="handler/search-vid.jsp?vtbe=true&amp;course_id=@X@course.pk_string@X@" />
-			   <description value="Embed Ilos Video" />
-		 	   <icons>
-		 		 <listitem value="/images/handler_icon.gif"></listitem>
-		 		 <toolbar value="/images/handler_icon.gif"></toolbar>
-		 	   </icons>
-		 </link>       
+            <type value="vtbe_mashup_course" />
+            <name value="Ilos Videos" />
+            <url value="handler/search-vid.jsp?vtbe=true&amp;course_id=@X@course.pk_string@X@" />
+            <description value="Embed Ilos Video" />
+		 </link>
 		</links>
       </application>
     </application-defs>

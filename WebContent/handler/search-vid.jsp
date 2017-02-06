@@ -153,11 +153,11 @@
 		String content = "";
 		String preview = "";
 		for (Video v : vl) {	
-			content = eb2.getContentHtml(v.videoID, "");
+			//content = eb2.getContentHtml(v.randtag, "");
 
-			// TODO: Test this for various Tweaks....
+			// TODO: Test this for various Tweaks.... probably delete preview.jsp
 			// eg.  displayTitle=false&useIFrame=false&embed=true
-			preview = "preview.jsp?contentId=" + v.videoID + "&displayTitle=false";
+			//preview = "preview.jsp?contentId=" + v.videoID + "&displayTitle=false";
 	%>
 <div class="ensemble-searchResult-itemContainer">
     <div class="ensemble-searchResult-dataContainer">
@@ -177,13 +177,13 @@
       <table class="ensemble-searchResult-imageOptions" cellpadding="0" cellspacing="0">
        <tbody><tr>
         <td class="ensemble-searchResult-button">
-        <a class="various fancybox.iframe"  href="<%=preview %>" title="<%=v.videoTitle %>">Preview</a>
+        <a class="various fancybox.iframe"  href="<%=v.embedLink %>" title="<%=v.videoTitle %>">Preview</a>
         </td>
        </tr>
        <tr>
         <td class="ensemble-searchResult-button"> 
         <!-- links to search-vid-process.jsp -->
-         <a href="<%=processUrl %>?video_id=<%=v.videoID %>&amp;title=<%=URLEncoder.encode(v.videoTitle,"UTF-8") %>&amp;content_id=<%=contentId %>&amp;course_id=<%=courseId %>&amp;http_ref=<%=ref %>">Select</a>
+         <a href="<%=processUrl %>?randtag=<%=v.randtag %>&amp;title=<%=URLEncoder.encode(v.videoTitle,"UTF-8") %>&amp;course_id=<%=courseId %>&amp;http_ref=<%=ref %>">Select</a>
         </td>
        </tr>
       </tbody></table>

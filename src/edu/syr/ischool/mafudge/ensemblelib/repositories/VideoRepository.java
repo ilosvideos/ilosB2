@@ -135,6 +135,8 @@ public class VideoRepository {
 			v.videoTitle = getElementValue(doc,"title",i);
 			v.thumbnailUrl = getElementValue(doc,"media:thumbnail",i);
 			v.link = getElementValue(doc,"link",i);
+			v.embedLink = getElementValue(doc,"embedLink",i);
+			v.randtag = getElementValue(doc,"randtag",i);
 
 			this.addVideo(v);
 		} //end for
@@ -142,21 +144,23 @@ public class VideoRepository {
 
 	private String getElementValue(Document xmlDoc, String tagName, int index) 
 	{
+		NodeList nodes = xmlDoc.getDocumentElement().getElementsByTagName(tagName);
 		String result = "";
 		try {
-			if(tagName == "pubDate")
+			if(tagName == "pubDate" || tagName == "embedLink" || tagName == "randtag")
 			{
-				result =  xmlDoc.getElementsByTagName(tagName).item(index).getChildNodes().item(0).getNodeValue();
+				Element element = (Element) nodes.item(index);
+				result = element.getChildNodes().item(0).getNodeValue();
 			}
 			else if(tagName == "media:thumbnail")
 			{
-				NodeList nodes = xmlDoc.getDocumentElement().getElementsByTagName(tagName);
 				Element element = (Element) nodes.item(index);
 				result = element.getAttribute("url");
 			}
 			else
 			{
-				result =  xmlDoc.getElementsByTagName(tagName).item(++index).getChildNodes().item(0).getNodeValue();
+				Element element = (Element) nodes.item(++index);
+				result = element.getChildNodes().item(0).getNodeValue();
 			}
 		} catch (NullPointerException e) {
 			result = "";

@@ -22,6 +22,10 @@ public class Video {
 	@Element (required=false)
 	public String link;
 	@Element (required=false)
+	public String embedLink;
+	@Element (required=false)
+	public String randtag;
+	@Element (required=false)
 	public String thumbnailUrl;
 
 }

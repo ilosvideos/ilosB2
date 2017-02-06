@@ -16,6 +16,7 @@ import edu.syr.ischool.mafudge.ensemblelib.repositories.*;
 public class EnsembleB2 {
 
 	private String m_serverUrl;
+	private String m_apiUrl;
 	private String m_apiKey;
 	private String m_secretKey;
 	private String m_domain;
@@ -37,9 +38,12 @@ public class EnsembleB2 {
 		m_secretKey = secretKey;
 		m_domain = domain;
 		m_serverUrl =  serverUrl.replaceAll("/$", "");
-		m_serverUrl = "https://cloudapi.ilosvideos.com/";
-		m_simpleApiBaseUrl = m_serverUrl + "/opensearch/?api_key=" + m_apiKey;
-		m_secureApiBaseUrl = m_serverUrl + "/opensearch/?api_key=" + m_apiKey;
+		//todo send api server too as parameter
+		m_serverUrl = "https://cloud.ilosvideos.com/";
+		m_apiUrl = "https://cloudapi.ilosvideos.com/";
+
+		m_simpleApiBaseUrl = m_apiUrl + "/opensearch/?api_key=" + m_apiKey;
+		m_secureApiBaseUrl = m_apiUrl + "/opensearch/?api_key=" + m_apiKey;
 	}
 	
 	
@@ -99,7 +103,8 @@ public class EnsembleB2 {
 	
 	// Ensemble 3.4 and up
 	public String getEmbedPluginUrl() {
-		return (this.m_serverUrl + "/app/plugin/embed.aspx");
+		//return (this.m_serverUrl + "/app/plugin/embed.aspx");
+		return (this.m_serverUrl );
 		
 	}
 	
@@ -132,12 +137,11 @@ public class EnsembleB2 {
 	}
 
 	public String getContentHtml(String contentID, String thumbnail){
-		// Ensemble 3.4 and up
 		return getContentHtmlAsIFrame(contentID,thumbnail);
-		//return getContentHtmlAsJavascript(contentID, thumbnail);
 	}
 	
 	// Ensemble pre 3.4
+/*
 	public String getContentHtmlAsJavascript(String contentID, String thumbnail) {
 		String plugInUrl = this.getPluginUrl();
 		String embedHtml = "<div id=\"ensembleEmbeddedContent_" + contentID + "\" class=\"ensembleEmbeddedContent\" style=\"width: 480px; height: 326px;\">";
@@ -146,14 +150,15 @@ public class EnsembleB2 {
 		embedHtml +="</script></div>";
 		return embedHtml;
 	}
+*/
 
 	// Ensemble 3.4 and higher
-	public String getContentHtmlAsIFrame(String contentID, String thumbnail) {
+	public String getContentHtmlAsIFrame(String randtag, String thumbnail) {
 		String plugInUrl=this.getEmbedPluginUrl();
-		String embedHtml = "<iframe id=\"ensembleEmbeddedContent_" + contentID + "\" src=\"" + plugInUrl + "?ID=" + contentID;
-		embedHtml += "&displayTitle=false&startTime=0&autoPlay=false&hideControls=false&showCaptions=false&width=480&height=270\" frameborder=\"0\"";
-		embedHtml += "style=\"width:480px; height:326px;\" width=\"480\" height=\"326\"";
-		embedHtml += " allowfullscreen></iframe>";
+
+		String embedHtml = "<iframe id=\"ilosEmbeddedContent_"+randtag+"\" width=\"640\" height=\"360\" allowTransparency=\"true\"";
+		embedHtml += " mozallowfullscreen webkitallowfullscreen allowfullscreen style=\"background-color:transparent;\" frameBorder=\"0\"";
+		embedHtml += " src=\""+plugInUrl+"embed/"+randtag+"\"></iframe>";
 		return embedHtml;
 	}
 
