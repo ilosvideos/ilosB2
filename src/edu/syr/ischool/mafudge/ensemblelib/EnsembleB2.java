@@ -100,16 +100,9 @@ public class EnsembleB2 {
 		
 	}
 	
-	public String getContentUrl(String contentId) throws Exception {
-		String requestUrl = this.buildPreviewUrl(contentId);
-		String hmac = HMacMD5Encoder.Encode(this.m_secretKey, requestUrl.toLowerCase());
-		return (requestUrl + hmac);
-	}
-
 	public String getWebDestinationHtml(String webDestinationID) {
 		// Ensemble 3.4 and up
 		return getWebDestinationHtmlAsIFrame(webDestinationID);
-		// return getWebDestinationHtmlAsJavascript(webDestinationID);
 	}
 
 	// Ensemble pre 3.4
@@ -151,14 +144,6 @@ public class EnsembleB2 {
 		searchText = searchText.length() == 0 ? "!" : searchText;
 		String requestUrl = this.m_secureApiBaseUrl + "&q=" + searchText;
 		return requestUrl;
-	}
-
-	private String buildPreviewUrl(String contentId) {
-		DateTime nowUtc = (new DateTime()).withZone(DateTimeZone.UTC);
-		String timeStamp = nowUtc.toString(DateTimeFormat.forPattern("yyyyMMddHHmmss"));
-		String requestUrl = this.m_secureApiBaseUrl + "/content/" +contentId + "?ts=" + timeStamp + "&hmac=";
-		return requestUrl;
-		
 	}
 
 }
