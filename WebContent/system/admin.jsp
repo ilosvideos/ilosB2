@@ -3,6 +3,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@page import="com.spvsoftwareproducts.blackboard.utils.B2Context" errorPage="../error.jsp" %>
 <%@page import="iloslib.IlosB2" errorPage="../error.jsp" %>
+<%@page import="iloslib.App" errorPage="../error.jsp" %>
 <%@taglib uri="/bbNG" prefix="bbNG" %>
 <bbNG:genericPage title="${bundle['page.system.title']}" entitlement="system.admin.VIEW">
 
@@ -12,14 +13,15 @@
   String API_KEY = "api-key";
   String SECRET_KEY = "secret-key";
 
+  App app = new App();
+
   B2Context b2Context = new B2Context(request);
   String cancelUrl = "index.jsp";
 
-  //TODO how to add env variables?
-  String defaultServer = "https://cloud.ilosvideos.com";
+  String defaultServer = app.getProperty("defaultServer");
   b2Context.setSetting(SERVER_NAME, defaultServer);
 
-  String apiServer = "https://cloudapi.ilosvideos.com";
+  String apiServer = app.getProperty("apiServer");
   b2Context.setSetting(API_SERVER_NAME, apiServer);
 
   if (request.getMethod().equalsIgnoreCase("POST")) {

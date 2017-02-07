@@ -21,7 +21,7 @@ sourceSets {
             srcDir 'src'
         }
         resources {
-            srcDir 'src/resources'
+            srcDir 'resources'
         }
     }
 }

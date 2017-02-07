@@ -6,7 +6,7 @@
 	String secretKey = "";
 	String serverUrl = "";
 
-	IlosBe eb2 = new  IlosB2( serverUrl,  apiKey,  secretKey, apiUrl);
+	IlosB2 eb2 = new  IlosB2( serverUrl,  apiKey,  secretKey, apiUrl);
 
 	try	
 	{

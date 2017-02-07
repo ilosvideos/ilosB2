@@ -45,14 +45,6 @@ public class IlosB2 {
 		return result;
 	}
 	
-/*
-	public Boolean TestApi() throws Exception {
-		String Expected = "Success";
-		String result = this.TestApiWithResult();
-		return (result.indexOf(Expected) > 0);
-	}
-*/
-
 	public VideoRepository getVideoRepository()
 	{
 		return m_vr;
