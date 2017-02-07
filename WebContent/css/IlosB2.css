@@ -44,21 +44,30 @@
 }
 
 .successButton{
-  background: #4cb64c!important;
+  background: #B8E986 !important;
   color: #fff!important;
 
   text-shadow: none !important;
   box-shadow: none !important;
-  border: 0px solid #4cb64c !important;
+  border: 0px;
+  width: 71px;
+  margin-bottom: 5px;
 }
 
 .infoButton{
-  background: #46b8da !important;
+  background: #5495b6 !important;
   color: #fff !important;
 
   text-shadow: none !important;
   box-shadow: none !important;
-  border: 0px solid #46b8da !important;
+  border: 0px;
+  width: 71px;
+}
+
+.grid-buttons {
+  position: absolute;
+  top:5px;
+  right:60px;
 }
 
 #grid {
@@ -88,7 +97,6 @@
 }
 
 .grid-item .g-info {
-  width: 100%;
   padding: 10px;
   margin-bottom: 0px;
   position: absolute;
@@ -118,6 +126,12 @@
 .grid-item .g-info .g-icons {
   position: relative;
   top:-5px;
+}
+
+.grid-item .g-duration {
+  position: absolute;
+  top:37px;
+  right:10px;
 }
 
 .grid-item .g-author {
@@ -161,31 +175,8 @@
   display: block;
 }
 
-.grid-sizer,
-.grid-item {
-  width: 23%;
-  width: calc(25% - 22.5px);
-}
-
-.grid-vertical .grid-sizer,
 .grid-vertical .grid-item {
   width: 100%;
-  max-width: 1025px;
-}
-
-@media all and (max-width: 767px) {
-  .grid-sizer,
-  .grid-item {
-    width: 100%;
-  }
-
-  .grid-item--md {
-    width: 100%;
-  }
-
-  .grid-item--lg {
-    width: 100%;
-  }
 }
 
 .i-text {

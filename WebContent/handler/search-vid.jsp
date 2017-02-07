@@ -146,21 +146,21 @@
 						<img style="background-image: url(<%=v.thumbnailUrl %>)">
 						<p class="i-text">
 							<span class="g-title i-text-md"><%=v.videoTitle %></span>
-							<span class="g-icons i-text-xs pull-right"><img src="../images/play.png" width="24" alt="Plays" /> <%=v.plays %> &nbsp;<img src="../images/duration.png" width="24" alt="Duration" /> <%=v.duration %></span>
+							<span class="g-icons i-text-md pull-right"><img src="../images/play.png" width="24" alt="Plays" /> <%=v.plays %></span>
 						</p>
 						<p class="i-text i-text-xs">
 							<span class="g-author"><%=v.author %></span>
 							<span class="g-date i-text-light"><%=v.videoDate %></span>
 
-							<span class="g-buttons i-text-light pull-right">
-								<a href="<%=processUrl %>?randtag=<%=v.randtag %>&amp;title=<%=URLEncoder.encode(v.videoTitle,"UTF-8") %>&amp;course_id=<%=courseId %>&amp;http_ref=<%=ref %>">
-									<input type="submit" class="button successButton" value="Embed" id=""/>
-								</a>
-								<a class="various fancybox.iframe"  href="<%=v.embedLink %>" title="<%=v.videoTitle %>">
-									<input type="submit" class="button infoButton" value="Preview" id=""/>
-								</a>
-							</span>
-
+							<span class="g-duration i-text-light pull-right"><%=v.duration %></span>
+						</p>
+						<p class="grid-buttons">
+							<a href="<%=processUrl %>?randtag=<%=v.randtag %>&amp;title=<%=URLEncoder.encode(v.videoTitle,"UTF-8") %>&amp;course_id=<%=courseId %>&amp;http_ref=<%=ref %>">
+								<input type="submit" class="button successButton" value="Embed" id=""/>
+							</a> <br>
+							<a class="various fancybox.iframe"  href="<%=v.embedLink %>" title="<%=v.videoTitle %>">
+								<input type="submit" class="button infoButton" value="Preview" id=""/>
+							</a>
 						</p>
 					</div>
 				</div>
