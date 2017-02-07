@@ -22,18 +22,15 @@
 
     <!-- Tools defined by this extension -->
     <application-defs>
-      <application handle="Ilos-B2" type="shared" use-ssl="false" name="Ilos Video (In Text Editor)" can-allow-guest="true"  small-icon="" large-icon="/images/handler_icon.gif" is-course-tool="true" is-group-tool="true" is-sys-tool="true" is-org-tool="true">
-        <description small-icon="/images/handler_icon.gif">Application installed as part of the Ilos Building Block</description>
+      <application handle="Ilos-B2" type="shared" use-ssl="false" name="Ilos Video (In Text Editor)" can-allow-guest="true"  small-icon="" is-course-tool="true" is-group-tool="true" is-sys-tool="true" is-org-tool="true">
+        <description>Application installed as part of the Ilos Building Block</description>
         <links>
            <link> <!-- System Tool -->
             <type value="system_tool"/>
             <name value="Ilos Settings"/>
             <url value="system/index.jsp" />
             <description value="Administer the Ilos Video Building Block" />
-            <icons>
-              <listitem value="images/ensemble.icon.gif"/>
-            </icons>
-          </link>   
+          </link>
 		  <link> <!--course Mashup Entry Point For Ilos Video-->
             <type value="vtbe_mashup_course" />
             <name value="Ilos Videos" />

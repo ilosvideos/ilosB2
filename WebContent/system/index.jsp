@@ -21,7 +21,7 @@
     <bbNG:breadcrumbBar environment="SYS_ADMIN_PANEL" navItem="admin_plugin_manage">
       <bbNG:breadcrumb title="${bundle['plugin.name']}" />
     </bbNG:breadcrumbBar>
-    <bbNG:pageTitleBar iconUrl="../images/powered.by.ensemble.gif" showTitleBar="true" title="${bundle['page.system.index.title']}"/>
+    <bbNG:pageTitleBar showTitleBar="true" title="${bundle['page.system.index.title']}"/>
     <bbNG:actionControlBar>
       <bbNG:actionButton title="${bundle['page.system.index.button.admin']}" url="admin.jsp" primary="true" />
     </bbNG:actionControlBar>

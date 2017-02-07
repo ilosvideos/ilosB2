@@ -41,7 +41,7 @@
       <bbNG:breadcrumb href="index.jsp" title="${bundle['plugin.name']}" />
       <bbNG:breadcrumb title="${bundle['page.system.admin.title']}" />
     </bbNG:breadcrumbBar>
-    <bbNG:pageTitleBar iconUrl="../images/powered.by.ensemble.gif" showTitleBar="true" title="${bundle['page.system.admin.title']}"/>
+    <bbNG:pageTitleBar showTitleBar="true" title="${bundle['page.system.admin.title']}"/>
   </bbNG:pageHeader>
 
   <bbNG:form action="" id="id_simpleForm" name="simpleForm" method="post" onsubmit="return validateForm();">
