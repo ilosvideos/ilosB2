@@ -11,7 +11,7 @@ import iloslib.models.*;
 import iloslib.repositories.*;
 
 // Main Class Which Brokers All Activity with Ensemble
-public class EnsembleB2 {
+public class IlosB2 {
 
 	private String m_serverUrl;
 	private String m_apiUrl;
@@ -24,8 +24,7 @@ public class EnsembleB2 {
 	private String SERVER_NAME = "server-name";
 	private String API_SERVER_NAME = "api-server-name";
 
-	// This is the proper constructor going forward
-	public EnsembleB2(String serverUrl, String apiKey, String secretKey, String apiUrl)
+	public IlosB2(String serverUrl, String apiKey, String secretKey, String apiUrl)
 	{
 		m_vr = new VideoRepository();
 		m_http= new SimpleHttpClient();

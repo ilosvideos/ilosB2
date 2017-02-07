@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@page import="iloslib.EnsembleB2" errorPage="../error.jsp"%>
+<%@page import="iloslib.IlosB2" errorPage="../error.jsp"%>
 <%
 	String apiUrl = request.getParameter("url");
 	String apiKey = request.getParameter("apiKey");
 	String secretKey = "";
 	String serverUrl = "";
 
-	EnsembleB2 eb2 = new  EnsembleB2( serverUrl,  apiKey,  secretKey, apiUrl);
+	IlosBe eb2 = new  IlosB2( serverUrl,  apiKey,  secretKey, apiUrl);
 
 	try	
 	{

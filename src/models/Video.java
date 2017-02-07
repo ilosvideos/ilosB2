@@ -13,19 +13,35 @@ public class Video {
 	
 	@Element
 	public String videoID;
+
 	@Element (required=false)
 	public String videoDate;
+
 	@Element (required=false)
 	public String videoDescription;
+
 	@Element (required=false)
 	public String videoTitle;
+
 	@Element (required=false)
 	public String link;
+
 	@Element (required=false)
 	public String embedLink;
+
 	@Element (required=false)
 	public String randtag;
+
 	@Element (required=false)
 	public String thumbnailUrl;
+
+	@Element (required=false)
+	public String plays;
+
+	@Element (required=false)
+	public String duration;
+
+	@Element (required=false)
+	public String author;
 
 }
