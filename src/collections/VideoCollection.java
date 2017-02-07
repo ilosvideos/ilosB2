@@ -1,4 +1,4 @@
-package edu.syr.ischool.mafudge.ensemblelib.collections;
+package iloslib.collections;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 
-import edu.syr.ischool.mafudge.ensemblelib.models.Video;
+import iloslib.models.Video;
 
 //
 // This is an enumerable collection of class Video

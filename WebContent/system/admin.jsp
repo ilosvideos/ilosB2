@@ -2,7 +2,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@page import="com.spvsoftwareproducts.blackboard.utils.B2Context" errorPage="../error.jsp" %>
-<%@page import="edu.syr.ischool.mafudge.ensemblelib.EnsembleB2" errorPage="../error.jsp" %>
+<%@page import="iloslib.EnsembleB2" errorPage="../error.jsp" %>
 <%@taglib uri="/bbNG" prefix="bbNG" %>
 <bbNG:genericPage title="${bundle['page.system.title']}" entitlement="system.admin.VIEW">
 

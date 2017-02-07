@@ -1,4 +1,4 @@
-package edu.syr.ischool.mafudge.ensemblelib;
+package iloslib;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,8 +7,8 @@ import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.joda.time.format.DateTimeFormat;
 
-import edu.syr.ischool.mafudge.ensemblelib.models.*;
-import edu.syr.ischool.mafudge.ensemblelib.repositories.*;
+import iloslib.models.*;
+import iloslib.repositories.*;
 
 // Main Class Which Brokers All Activity with Ensemble
 public class EnsembleB2 {

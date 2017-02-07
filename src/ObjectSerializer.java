@@ -1,4 +1,4 @@
-package edu.syr.ischool.mafudge.ensemblelib;
+package iloslib;
 
 import java.io.StringWriter;
 

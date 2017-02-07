@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@page import="edu.syr.ischool.mafudge.ensemblelib.EnsembleB2" errorPage="../error.jsp"%>
+<%@page import="iloslib.EnsembleB2" errorPage="../error.jsp"%>
 <%
 	String apiUrl = request.getParameter("url");
 	String apiKey = request.getParameter("apiKey");

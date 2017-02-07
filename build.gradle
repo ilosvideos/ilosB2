@@ -18,7 +18,7 @@ targetCompatibility = '1.7'
 sourceSets {
     main {
         java {
-            srcDir 'src/edu'
+            srcDir 'src'
         }
         resources {
             srcDir 'src/resources'

@@ -1,4 +1,4 @@
-package edu.syr.ischool.mafudge.ensemblelib;
+package iloslib;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;

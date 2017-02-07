@@ -10,10 +10,10 @@
 				blackboard.persist.course.*" 
 		errorPage="../error.jsp"%>
 <%@page import="com.spvsoftwareproducts.blackboard.utils.B2Context" errorPage="../error.jsp"%>
-<%@page import="edu.syr.ischool.mafudge.ensemblelib.*,
-				edu.syr.ischool.mafudge.ensemblelib.models.*,  
-				edu.syr.ischool.mafudge.ensemblelib.collections.*,  
-				edu.syr.ischool.mafudge.ensemblelib.repositories.*"  
+<%@page import="iloslib.*,
+				iloslib.models.*,
+				iloslib.collections.*,
+				iloslib.repositories.*"
 				errorPage ="../error.jsp" %>
 <%@ taglib uri="/bbNG" prefix="bbNG"%>
 <%@ taglib uri="/bbNG" prefix="bbNG"%>

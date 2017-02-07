@@ -1,4 +1,4 @@
-package edu.syr.ischool.mafudge.ensemblelib.repositories;
+package iloslib.repositories;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 import org.w3c.dom.*;
 
-import edu.syr.ischool.mafudge.ensemblelib.ObjectSerializer;
-import edu.syr.ischool.mafudge.ensemblelib.collections.VideoCollection;
-import edu.syr.ischool.mafudge.ensemblelib.models.Video;
+import iloslib.ObjectSerializer;
+import iloslib.collections.VideoCollection;
+import iloslib.models.Video;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;

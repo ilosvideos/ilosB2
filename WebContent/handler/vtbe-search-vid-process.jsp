@@ -1,6 +1,6 @@
 <%@ page import="blackboard.platform.plugin.PlugInUtil" errorPage="../error.jsp"%>
 <%@ page import="com.spvsoftwareproducts.blackboard.utils.B2Context" errorPage="../error.jsp"%>
-<%@ page import="edu.syr.ischool.mafudge.ensemblelib.*"  errorPage ="../error.jsp" %>
+<%@ page import="iloslib.*"  errorPage ="../error.jsp" %>
 <%@ page import="java.util.*,
 				java.net.*" 
 		errorPage="../error.jsp"%>
