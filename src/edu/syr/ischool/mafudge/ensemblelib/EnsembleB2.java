@@ -20,8 +20,6 @@ public class EnsembleB2 {
 	private String m_secureApiBaseUrl;
 	private String m_simpleApiBaseUrl;
 	private VideoRepository m_vr;
-	private WebDestinationRepository m_wd;
-	private InstContentRepository m_ic;
 	private SimpleHttpClient m_http;
 	private String SERVER_NAME = "server-name";
 	private String API_SERVER_NAME = "api-server-name";
@@ -30,8 +28,6 @@ public class EnsembleB2 {
 	public EnsembleB2(String serverUrl, String apiKey, String secretKey, String apiUrl)
 	{
 		m_vr = new VideoRepository();
-		m_ic = new InstContentRepository();
-		m_wd = new WebDestinationRepository();
 		m_http= new SimpleHttpClient();
 		m_apiKey = apiKey;
 		m_secretKey = secretKey;
@@ -51,20 +47,17 @@ public class EnsembleB2 {
 		return result;
 	}
 	
+/*
 	public Boolean TestApi() throws Exception {
 		String Expected = "Success";
 		String result = this.TestApiWithResult();
 		return (result.indexOf(Expected) > 0);
 	}
+*/
 
 	public VideoRepository getVideoRepository()
 	{
 		return m_vr;
-	}
-	
-	public InstContentRepository getInstContentRepository()
-	{
-		return m_ic;
 	}
 	
 	public String getServerUrl() { return m_serverUrl; }
@@ -80,14 +73,6 @@ public class EnsembleB2 {
 		return m_vr.getVideos();
 	}
 	
-	public List<Video> getVideosByWebDestination(String webDestinationId) throws Exception	{
-		return getVideosByUrl(getWebDestinationHref(webDestinationId));
-	}
-	
-	public String getWebDestinationHref(String webDestinationId) throws Exception {
-		return (this.m_simpleApiBaseUrl + "/video/list.xml/" + webDestinationId);
-	}
-	
 	// Pre-Ensemble 3.4
 	public String getPluginUrl() {
 		return (this.m_serverUrl + "/app/plugin/plugin.aspx");
@@ -100,27 +85,6 @@ public class EnsembleB2 {
 		
 	}
 	
-	public String getWebDestinationHtml(String webDestinationID) {
-		// Ensemble 3.4 and up
-		return getWebDestinationHtmlAsIFrame(webDestinationID);
-	}
-
-	// Ensemble pre 3.4
-	public String getWebDestinationHtmlAsJavascript(String webDestinationID) {
-		String plugInUrl = this.getPluginUrl();
-		String embedHtml = "<div id=\"ensembleContentContainer_" + webDestinationID + "\" class=\"ensembleContentContainer\" style=\"width: 99%; height: 1000px;\">";
-		embedHtml += "<script type=\"text/javascript\" src=\"" + plugInUrl + "?destinationID=" + webDestinationID + "&useIFrame=true\"></script></div>";
-		return embedHtml;
-	}
-
-	// Ensemble 3.4 and higher
-	public String getWebDestinationHtmlAsIFrame(String webDestinationID) {
-		String plugInUrl = this.getEmbedPluginUrl();
-		String embedHtml = "<iframe id=\"ensembleFrame_" + webDestinationID + "\" src=\"" + plugInUrl + "?DestinationID=" + webDestinationID + "\" ";
-		embedHtml += "frameborder=\"0\" style=\"width: 99%; height : 1000px;\" allowfullscreen></iframe>";
-		return embedHtml;
-	}
-
 	public String getContentHtml(String randtag){
 		String plugInUrl=this.getEmbedPluginUrl();
 
