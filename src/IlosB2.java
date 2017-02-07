@@ -10,7 +10,6 @@ import org.joda.time.format.DateTimeFormat;
 import iloslib.models.*;
 import iloslib.repositories.*;
 
-// Main Class Which Brokers All Activity with Ensemble
 public class IlosB2 {
 
 	private String m_serverUrl;
@@ -72,14 +71,11 @@ public class IlosB2 {
 		return m_vr.getVideos();
 	}
 	
-	// Pre-Ensemble 3.4
 	public String getPluginUrl() {
 		return (this.m_serverUrl + "/app/plugin/plugin.aspx");
 	}
 	
-	// Ensemble 3.4 and up
 	public String getEmbedPluginUrl() {
-		//return (this.m_serverUrl + "/app/plugin/embed.aspx");
 		return (this.m_serverUrl );
 		
 	}
