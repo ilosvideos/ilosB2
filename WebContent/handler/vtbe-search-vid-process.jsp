@@ -19,12 +19,22 @@
 
 	String WYSIWYG_WEBAPP = "/webapps/wysiwyg";
 	String randtag = request.getParameter("randtag");
+	String url = request.getParameter("url");
+	String embedHtml;
 
-	String embedHtml = eb2.getContentHtml(randtag);
-	
+	if(url != null)
+	{
+		embedHtml= eb2.getContentHtmlByUrl(url);
+	}
+	else
+	{
+		embedHtml = eb2.getContentHtml(randtag);
+	}
+
 	// Process the vtbe
     request.setAttribute( "embedHtml", embedHtml );
     String embedUrl = PlugInUtil.getInsertToVtbePostUrl().replace( WYSIWYG_WEBAPP, "" );
     RequestDispatcher rd = getServletContext().getContext( WYSIWYG_WEBAPP ).getRequestDispatcher( embedUrl );
     rd.forward( request, response );
+
 %>
