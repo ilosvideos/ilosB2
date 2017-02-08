@@ -81,6 +81,14 @@ public class IlosB2 {
 		return embedHtml;
 	}
 
+	public String getContentHtmlByUrl(String url){
+
+		String embedHtml = "<iframe id=\"ilosEmbeddedContent_\" width=\"640\" height=\"360\" allowTransparency=\"true\"";
+		embedHtml += " mozallowfullscreen webkitallowfullscreen allowfullscreen style=\"background-color:transparent;\" frameBorder=\"0\"";
+		embedHtml += " src=\""+url+"\"></iframe>";
+		return embedHtml;
+	}
+
 	public List<Video> getSharedLibraryVideo(String searchText, String userName) throws Exception {
 		String result = "";
 		String requestUrl = this.buildRequestSearchUrl(searchText);
