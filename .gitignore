@@ -2,7 +2,9 @@
 .idea
 .metadata
 .settings
-build
+build/classes
+build/resources
+build/tmp
 .classpath
 .project
 

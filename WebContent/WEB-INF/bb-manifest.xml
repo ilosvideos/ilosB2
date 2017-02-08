@@ -31,12 +31,14 @@
             <url value="system/index.jsp" />
             <description value="Administer the Ilos Video Building Block" />
           </link>
-		  <link> <!--course Mashup Entry Point For Ilos Video-->
+<!--      TODO this uses open search instead of login
+		  <link> &lt;!&ndash;course Mashup Entry Point For Ilos Video&ndash;&gt;
             <type value="vtbe_mashup_course" />
             <name value="Ilos Videos" />
             <url value="handler/search-vid.jsp?vtbe=true&amp;course_id=@X@course.pk_string@X@" />
             <description value="Embed Ilos Video" />
 		 </link>
+-->
             <link> <!--course Mashup Entry Point For Ilos Video-->
                 <type value="vtbe_mashup_course" />
                 <name value="Ilos Videos" />
