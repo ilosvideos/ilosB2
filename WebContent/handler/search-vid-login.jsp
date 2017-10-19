@@ -28,6 +28,7 @@
         <%
             B2Context b2Context = new B2Context(request);
             String jQueryPath = b2Context.getPath() + "js/jquery.min.js";
+            String courseId = b2Context.getRequestParameter("course_id", "");;
             pageContext.setAttribute("bundle", b2Context.getResourceStrings());
 
         %>
@@ -39,7 +40,7 @@
             </script>
         </bbNG:jsBlock>
 
-        <iframe src="lti.jsp" width="100%" height="600px" id="ilosIframe">
+        <iframe src="lti.jsp?course_id=<%=courseId%>" width="100%" height="600px" id="ilosIframe">
 
         </iframe>
 
