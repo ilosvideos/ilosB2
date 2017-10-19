@@ -7,8 +7,10 @@
 				blackboard.persist.*,
 				blackboard.data.course.*,
 				blackboard.persist.course.*,
-				javax.crypto.spec.SecretKeySpec,blackboard.data.role.*, blackboard.data.user.User.SystemRole,
+				javax.crypto.spec.SecretKeySpec,
+				blackboard.data.role.*,
                 javax.crypto.SecretKey,
+                blackboard.data.course.CourseMembership.*,
                 java.util.Base64.Encoder,org.apache.commons.codec.binary.Base64,
                 javax.crypto.Mac"
          errorPage="../error.jsp"%>
@@ -41,18 +43,19 @@
             String server = b2Context.getSetting(SERVER_NAME);
 
             String endPoint = server + "/lti/embed";
-            String familyCode = "blackboard";
+            String familyCode = "BlackboardBB";
             String selectionDirective = "embed_content";
             String intendedUse = "embed";
 
             User user = b2Context.getContext().getUser();
-            user.getBatchUid();
-            PortalRole portalRole = user.getPortalRole();
-            SystemRole systemRole = user.getSystemRole();
-
-
             String email = user.getEmailAddress();
-            //String role = portalRole.getRoleName();
+            String name = user.getGivenName();
+
+            //Weird bug that converts spaces to + so I'm just removing any space from the name
+            name = name.replaceAll("\\s+","");
+
+            CourseMembership courseMembership = b2Context.getContext().getCourseMembership();
+            Role role = courseMembership.getRole();
 
             //Just as the ilos app, the token is null, so we have to add the extra &
             String secret = b2Context.getSetting(API_SECRET)+"&";
@@ -62,7 +65,9 @@
             String baseStringParameters = "ext_content_intended_use=" + intendedUse +
                     "&launch_presentation_return_url=" + URLEncoder.encode(returnUrl) +
                     "&lis_person_contact_email_primary=" + URLEncoder.encode(email) +
+                    "&lis_person_name_given=" + URLEncoder.encode(name) +
                     "&oauth_consumer_key=" + apiKey +
+                    "&roles=" + URLEncoder.encode(role.toString()) +
                     "&selection_directive=" + selectionDirective +
                     "&tool_consumer_info_product_family_code=" + familyCode +
                     "&tool_consumer_instance_name=" + URLEncoder.encode(instanceName);
@@ -85,7 +90,7 @@
 
                 // Use jQuery via jQuery(...)
                 jQuery(document).ready(function(){
-                    //jQuery("#ltiPost").submit();
+                    jQuery("#ltiPost").submit();
                 });
 
             </script>
@@ -94,24 +99,18 @@
         <bbNG:cssFile href="../css/IlosB2.css"/>
         <bbNG:cssFile href="../css/jquery.fancybox.css" />
 
-<%--
-        <p><%=portalRole%></p>
---%>
-        <p><%=systemRole%></p>
-        <%--<p><%=role%></p>--%>
-<%--
-        <p><%=email%></p>
---%>
-
         <<form method="post" id="ltiPost" name="ltiPost" action="<%=server%>/lti/embed">
             <input type="hidden" name="ext_content_intended_use" id="ext_content_intended_use" value="<%=intendedUse%>">
             <input type="hidden" name="launch_presentation_return_url" id="launch_presentation_return_url" value="<%=returnUrl%>">
             <input type="hidden" name="lis_person_contact_email_primary" id="lis_person_contact_email_primary" value="<%=email%>">
+            <input type="hidden" name="lis_person_name_given" id="lis_person_name_given" value="<%=name%>">
             <input type="hidden" name="oauth_consumer_key" id="oauth_consumer_key" value="<%=apiKey%>">
+            <input type="hidden" name="roles" id="roles" value="<%=role.toString()%>">
             <input type="hidden" name="tool_consumer_instance_name" id="tool_consumer_instance_name" value="<%=instanceName%>">
             <input type="hidden" name="selection_directive" id="selection_directive" value="<%=selectionDirective%>">
             <input type="hidden" name="tool_consumer_info_product_family_code" id="tool_consumer_info_product_family_code" value="<%=familyCode%>">
             <input type="hidden" name="oauth_signature" id="oauth_signature" value="<%=signature%>">
+            <input type="hidden" name="baseString" id="baseString" value="<%=baseString%>">
         </form>
 
     </bbNG:learningSystemPage>
