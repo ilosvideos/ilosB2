@@ -40,7 +40,9 @@
             </script>
         </bbNG:jsBlock>
 
-        <iframe src="lti.jsp?course_id=<%=courseId%>" width="100%" height="600px" id="ilosIframe">
+
+        <iframe src="lti.jsp?course_id=<%=courseId%>" width="100%" height="600px" id="ilosIframe"
+                allowtransparency="true" mozallowfullscreen="" webkitallowfullscreen="" allowfullscreen="" frameborder="0">
 
         </iframe>
 

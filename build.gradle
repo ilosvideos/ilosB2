@@ -9,7 +9,7 @@ apply plugin: "idea"
 
 // define the version for the project when publishing to maven
 group "ilos.co"
-version "1.2.0"
+version "1.2.1"
 
 webAppDirName = file("WebContent")
 sourceCompatibility = '1.7'
@@ -28,7 +28,7 @@ sourceSets {
 
 ext {
     learnVersion = "9.1.201410.160373"
-    deployServer = "http://localhost:9876"
+    deployServer = "http://192.168.11.214:8080"
     deployInstance = "BBLEARN"
 }
 
