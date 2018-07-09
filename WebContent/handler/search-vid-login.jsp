@@ -51,7 +51,7 @@
 
                 var url = jQuery("#ilosIframe").contents().find(".url").text();
 
-                if (url.indexOf("ilosvideos") >= 0)
+                if (url.indexOf("vidgrid") >= 0)
                 {
                     document.location.href= "vtbe-search-vid-process.jsp?url="+encodeURIComponent(url);
                 }

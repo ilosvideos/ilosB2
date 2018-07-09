@@ -3,17 +3,17 @@
   <!-- core extension information -->
   <plugin>
     <name value= "plugin.name"/>
-    <handle value= "Ilos-B2"/>
+    <handle value= "VidGrid-B2"/>
     <default-locale value="en_US" />
     <description value= "plugin.description"/>
-    <version value= "1.2.1"/>
+    <version value= "1.2.2"/>
     <requires>
     	<bbversion value="9.1.0"/>
     </requires>
     <vendor>
       <id value="ist"/>
-      <name value="Ilos Co"/>
-      <url value="https://www.ilosvideos.com" />
+      <name value="VidGrid Co"/>
+      <url value="https://www.vidgrid.com" />
       <description value="plugin.vendor.description" />
     </vendor>
 	  <http-actions>
@@ -22,28 +22,28 @@
 
     <!-- Tools defined by this extension -->
     <application-defs>
-      <application handle="Ilos-B2" type="shared" use-ssl="false" name="Ilos Video (In Text Editor)" can-allow-guest="true"  small-icon="" is-course-tool="true" is-group-tool="true" is-sys-tool="true" is-org-tool="true">
-        <description>Application installed as part of the Ilos Building Block</description>
+      <application handle="VidGrid-B2" type="shared" use-ssl="false" name="VidGrid Video (In Text Editor)" can-allow-guest="true"  small-icon="" is-course-tool="true" is-group-tool="true" is-sys-tool="true" is-org-tool="true">
+        <description>Application installed as part of the VidGrid Building Block</description>
         <links>
            <link> <!-- System Tool -->
             <type value="system_tool"/>
-            <name value="Ilos Settings"/>
+            <name value="VidGrid Settings"/>
             <url value="system/index.jsp" />
-            <description value="Administer the Ilos Video Building Block" />
+            <description value="Administer the VidGrid Video Building Block" />
           </link>
 <!--
-		  <link> &lt;!&ndash;course Mashup Entry Point For Ilos Video&ndash;&gt;
+		  <link> &lt;!&ndash;course Mashup Entry Point For VidGrid Video&ndash;&gt;
             <type value="vtbe_mashup_course" />
-            <name value="Ilos Videos" />
+            <name value="VidGrid Videos" />
             <url value="handler/search-vid.jsp?vtbe=true&amp;course_id=@X@course.pk_string@X@" />
-            <description value="Embed Ilos Video" />
+            <description value="Embed VidGrid Video" />
 		 </link>
 -->
-            <link> <!--course Mashup Entry Point For Ilos Video-->
+            <link> <!--course Mashup Entry Point For VidGrid Video-->
                 <type value="vtbe_mashup_course" />
-                <name value="Ilos Videos" />
+                <name value="VidGrid Videos" />
                 <url value="handler/search-vid-login.jsp?vtbe=true&amp;course_id=@X@course.pk_string@X@" />
-                <description value="Embed Ilos Video" />
+                <description value="Embed VidGrid Video" />
             </link>
 		</links>
       </application>

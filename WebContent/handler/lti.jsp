@@ -57,7 +57,7 @@
             CourseMembership courseMembership = b2Context.getContext().getCourseMembership();
             Role role = courseMembership.getRole();
 
-            //Just as the ilos app, the token is null, so we have to add the extra &
+            //Just as the VidGrid app, the token is null, so we have to add the extra &
             String secret = b2Context.getSetting(API_SECRET)+"&";
 
             String basePostString = "POST&" + URLEncoder.encode(endPoint) + "&";

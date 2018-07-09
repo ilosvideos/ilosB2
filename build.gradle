@@ -8,8 +8,8 @@ apply plugin: "idea"
 //apply from: "api.gradle"
 
 // define the version for the project when publishing to maven
-group "ilos.co"
-version "1.2.1"
+group "vidgrid"
+version "1.2.2"
 
 webAppDirName = file("WebContent")
 sourceCompatibility = '1.7'
