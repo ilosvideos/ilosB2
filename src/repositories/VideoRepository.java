@@ -94,7 +94,7 @@ public class VideoRepository {
 		m_vidList = vc.getCollection();
 	}
 
-	// builds the repository from an Raw XML string (as received from Ilos APIs).
+	// builds the repository from an Raw XML string (as received from VidGrid APIs).
 	public void fromRawXmlString(String xmlString) throws Exception {
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		DocumentBuilder db = dbf.newDocumentBuilder();
