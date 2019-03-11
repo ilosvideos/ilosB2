@@ -34,14 +34,14 @@
 <!--
 		  <link> &lt;!&ndash;course Mashup Entry Point For VidGrid Video&ndash;&gt;
             <type value="vtbe_mashup_course" />
-            <name value="VidGrid Videos" />
+            <name value="VidGrid" />
             <url value="handler/search-vid.jsp?vtbe=true&amp;course_id=@X@course.pk_string@X@" />
             <description value="Embed VidGrid Video" />
 		 </link>
 -->
             <link> <!--course Mashup Entry Point For VidGrid Video-->
                 <type value="vtbe_mashup_course" />
-                <name value="VidGrid Videos" />
+                <name value="VidGrid" />
                 <url value="handler/search-vid-login.jsp?vtbe=true&amp;course_id=@X@course.pk_string@X@" />
                 <description value="Embed VidGrid Video" />
             </link>
