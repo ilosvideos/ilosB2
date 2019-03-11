@@ -23,7 +23,7 @@
 <%
 	boolean isVtbe = request.getParameter("vtbe") != null ? true : false;
 %>
-<bbNG:learningSystemPage ctxId="ctx2" hideCourseMenu="<%=isVtbe %>" >
+<bbNG:learningSystemPage ctxId="ctx2" hideCourseMenu="false"  standalone="true">
 
 <bbNG:cssFile href="../css/IlosB2.css"/>
 <bbNG:cssFile href="../css/jquery.fancybox.css" /> 

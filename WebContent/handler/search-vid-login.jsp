@@ -20,7 +20,7 @@
 <%@ taglib uri="/bbData" prefix="bbData"%>
 <%@ page isErrorPage="true" %>
 <bbData:context id="ctx">
-    <bbNG:learningSystemPage ctxId="ctx2" hideCourseMenu="true" >
+    <bbNG:learningSystemPage ctxId="ctx2" hideCourseMenu="false"  standalone="true">
 
         <bbNG:cssFile href="../css/IlosB2.css"/>
         <bbNG:cssFile href="../css/jquery.fancybox.css" />
