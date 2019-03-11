@@ -6,7 +6,7 @@
     <handle value= "VidGrid-B2"/>
     <default-locale value="en_US" />
     <description value= "plugin.description"/>
-    <version value= "1.2.2"/>
+    <version value= "1.2.9"/>
     <requires>
     	<bbversion value="9.1.0"/>
     </requires>
@@ -22,28 +22,28 @@
 
     <!-- Tools defined by this extension -->
     <application-defs>
-      <application handle="VidGrid-B2" type="shared" use-ssl="false" name="VidGrid Video (In Text Editor)" can-allow-guest="true"  small-icon="" is-course-tool="true" is-group-tool="true" is-sys-tool="true" is-org-tool="true">
+      <application handle="VidGrid-B2" type="shared" use-ssl="false" name="VidGrid (In Text Editor)" can-allow-guest="true"  small-icon="" is-course-tool="true" is-group-tool="true" is-sys-tool="true" is-org-tool="true">
         <description>Application installed as part of the VidGrid Building Block</description>
         <links>
            <link> <!-- System Tool -->
             <type value="system_tool"/>
             <name value="VidGrid Settings"/>
             <url value="system/index.jsp" />
-            <description value="Administer the VidGrid Video Building Block" />
+            <description value="Administer the VidGrid Building Block" />
           </link>
 <!--
-		  <link> &lt;!&ndash;course Mashup Entry Point For VidGrid Video&ndash;&gt;
+		  <link> &lt;!&ndash;course Mashup Entry Point For VidGrid&ndash;&gt;
             <type value="vtbe_mashup_course" />
-            <name value="VidGrid Videos" />
+            <name value="VidGrid" />
             <url value="handler/search-vid.jsp?vtbe=true&amp;course_id=@X@course.pk_string@X@" />
-            <description value="Embed VidGrid Video" />
+            <description value="Embed VidGrid" />
 		 </link>
 -->
-            <link> <!--course Mashup Entry Point For VidGrid Video-->
+            <link> <!--course Mashup Entry Point For VidGrid-->
                 <type value="vtbe_mashup_course" />
-                <name value="VidGrid Videos" />
+                <name value="VidGrid" />
                 <url value="handler/search-vid-login.jsp?vtbe=true&amp;course_id=@X@course.pk_string@X@" />
-                <description value="Embed VidGrid Video" />
+                <description value="Embed VidGrid" />
             </link>
 		</links>
       </application>

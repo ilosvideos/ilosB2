@@ -23,7 +23,7 @@
 <%
 	boolean isVtbe = request.getParameter("vtbe") != null ? true : false;
 %>
-<bbNG:learningSystemPage ctxId="ctx2" hideCourseMenu="<%=isVtbe %>" >
+<bbNG:learningSystemPage ctxId="ctx2" hideCourseMenu="false"  standalone="true">
 
 <bbNG:cssFile href="../css/IlosB2.css"/>
 <bbNG:cssFile href="../css/jquery.fancybox.css" /> 
@@ -62,7 +62,7 @@
 	<bbNG:jsFile href="<%=jQueryPath %>"/>
 	<bbNG:jsFile href="<%=fancyBoxPath %>"/>
 
-	<bbNG:pageHeader instructions="Search VidGrid Video">
+	<bbNG:pageHeader instructions="Search VidGrid">
 		<bbNG:pageTitleBar iconUrl="https://s3.amazonaws.com/ilos-public-assets/vidgrid/favicon-16x16.png"
 						   showTitleBar="true"
 						   title="Search for a video to add through this interface."/>

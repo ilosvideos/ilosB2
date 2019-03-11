@@ -27,7 +27,7 @@
 <%@ page isErrorPage="true" %>
 
 <bbData:context id="ctx">
-    <bbNG:learningSystemPage ctxId="ctx2" hideCourseMenu="1" >
+    <bbNG:learningSystemPage ctxId="ctx2" hideCourseMenu="false" standalone="true">
 
         <%
             String SERVER_NAME = "server-name";
@@ -99,7 +99,7 @@
         <bbNG:cssFile href="../css/IlosB2.css"/>
         <bbNG:cssFile href="../css/jquery.fancybox.css" />
 
-        <<form method="post" id="ltiPost" name="ltiPost" action="<%=server%>/lti/embed">
+        <form method="post" id="ltiPost" name="ltiPost" action="<%=server%>/lti/embed">
             <input type="hidden" name="ext_content_intended_use" id="ext_content_intended_use" value="<%=intendedUse%>">
             <input type="hidden" name="launch_presentation_return_url" id="launch_presentation_return_url" value="<%=returnUrl%>">
             <input type="hidden" name="lis_person_contact_email_primary" id="lis_person_contact_email_primary" value="<%=email%>">
