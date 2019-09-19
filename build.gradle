@@ -9,7 +9,7 @@ apply plugin: "idea"
 
 // define the version for the project when publishing to maven
 group "vidgrid"
-version "1.2.9"
+version "1.3.1"
 
 webAppDirName = file("WebContent")
 sourceCompatibility = '1.7'
@@ -95,7 +95,7 @@ test {
 // Add a task to deploy a B2 using starting block
 task deployB2(dependsOn: "war") {
     ant.taskdef(name: "b2deploy", classname: "org.oscelot.ant.B2DeployTask", classpath: project.configurations.buildUtils.asPath)
-    ant.b2deploy(localfilepath: project.war.archivePath, host: project.ext.deployServer, courseorgavailable: 'true', clean: 'true', webappName: 'bb-starting-block-' + project.ext.deployInstance)
+    //ant.b2deploy(localfilepath: project.war.archivePath, host: project.ext.deployServer, courseorgavailable: 'true', clean: 'true', webappName: 'bb-starting-block-' + project.ext.deployInstance)
 }
 
 /*task wrapper(type: Wrapper) {
