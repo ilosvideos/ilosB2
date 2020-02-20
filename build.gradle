@@ -16,9 +16,6 @@ apply plugin: "maven"
 apply plugin: "eclipse"
 apply plugin: "idea"
 
-// Uncomment if your project has an API JAR
-//apply from: "api.gradle"
-
 // define the version for the project when publishing to maven
 group "vidgrid"
 version "1.3.2"
@@ -52,6 +49,9 @@ repositories {
     maven {
         url "https://maven.blackboard.com/content/repositories/releases/"
     }
+    maven {
+        url "http://artifactory.ctlt.ubc.ca/artifactory/ctlt-release-local/"
+    }
 }
 
 configurations {
@@ -61,17 +61,14 @@ configurations {
 // define the project's dependencies
 dependencies {
     def tomcatVersion = '8.0.42'
-    tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
-            "org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}",
-            "org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}"
 
     providedCompile "javax.servlet:servlet-api:2.5",
             "javax.servlet.jsp:jsp-api:2.1"
 
     // Dependencies are libraries needed to build, but should not be included in the B2 WAR.
     // You should NEVER include Learn JARs (other than webapis) in your B2.
-    providedCompile("blackboard.platform:bb-platform:9.1.201410.160373") { transitive = false }
-    providedCompile("blackboard.platform:bb-taglibs:9.1.201410.160373") { transitive = false }
+    providedCompile("blackboard.platform:bb-taglibs:$project.ext.learnVersion") { transitive = false }
+    providedCompile("blackboard.platform:bb-platform:$project.ext.learnVersion") { transitive = false }
     providedCompile('org.jdom:jdom:1.1.3') { transitive = false }
     providedCompile('net.sf.json-lib:json-lib:2.4:jdk15') { transitive = true }
 
@@ -82,12 +79,19 @@ dependencies {
     compile group: 'org.simpleframework', name: 'simple-xml', version: '2.7'
     compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.2'
     compile group: 'commons-httpclient', name: 'commons-httpclient', version: '3.1'
+    compile group: '', name: 'b2context', version: '1.3.00'
 
     buildUtils "org.oscelot:b2deploy-task:0.1.0"
 
-    compile name: 'b2context-1.3.00'
-
     testCompile 'org.testng:testng:6.8.7'
+
+    tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
+            "org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}",
+            "org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}",
+            "blackboard.platform:bb-taglibs:$project.ext.learnVersion",
+            "blackboard.platform:bb-platform:$project.ext.learnVersion",
+            "javax.servlet:jstl:1.2"
+            "b2context-1.3.00"
 }
 
 test {
@@ -103,3 +107,14 @@ task deployB2(dependsOn: "war") {
 /*task wrapper(type: Wrapper) {
     gradleVersion = '1.8'
 }*/
+
+task buildWar (type: War, dependsOn: tomcatJasper) {
+    from 'build/jsps/org/apache/jsp' // include the pre-compiled JSPs
+}
+
+tomcat {
+    jasper {
+        //validateXml = true
+        outputDir = file("build/jsps")
+    }
+}
